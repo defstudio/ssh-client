@@ -2,10 +2,8 @@
 
 namespace DefStudio\Ssh;
 
-
 use phpseclib\Crypt\RSA;
 use phpseclib\Net\SSH2;
-
 
 class Ssh
 {
@@ -16,34 +14,38 @@ class Ssh
     private string $username;
     private SSH2 $client;
 
-
     public function key(string $key): Ssh
     {
         $this->key = $key;
+
         return $this;
     }
 
     public function password(string $password): Ssh
     {
         $this->password = $password;
+
         return $this;
     }
 
     public function host(string $host): Ssh
     {
         $this->host = $host;
+
         return $this;
     }
 
     public function set_port(string $port): Ssh
     {
         $this->port = $port;
+
         return $this;
     }
 
     public function username(string $username): Ssh
     {
         $this->username = $username;
+
         return $this;
     }
 
@@ -51,7 +53,7 @@ class Ssh
     {
         $this->check_requirements();
 
-        if (!empty($this->key)) {
+        if (! empty($this->key)) {
             $key = new RSA();
             $key->loadKey($this->key);
         } else {
@@ -69,6 +71,4 @@ class Ssh
     {
         //TODO
     }
-
-
 }

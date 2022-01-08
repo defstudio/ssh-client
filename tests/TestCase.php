@@ -2,9 +2,9 @@
 
 namespace DefStudio\Ssh\Tests;
 
+use DefStudio\Ssh\SshServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Orchestra\Testbench\TestCase as Orchestra;
-use DefStudio\Ssh\SshServiceProvider;
 
 class TestCase extends Orchestra
 {
