@@ -54,7 +54,7 @@ class Ssh
 
     public function connect(): Ssh
     {
-        $this->check_requirements();
+        $this->checkRequirements();
 
         if (! empty($this->key)) {
             $key = new RSA();
@@ -85,7 +85,7 @@ class Ssh
         return $this->client->exec(implode(" && ", $commands));
     }
 
-    private function check_requirements(): void
+    protected function checkRequirements(): void
     {
         $this->host || throw SshParamsException::param_missing('host');
         $this->port || throw SshParamsException::param_missing('port');
