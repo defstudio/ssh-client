@@ -88,7 +88,7 @@ class Ssh
 
         $result = $this->client->exec(implode(" && ", $commands));
 
-        if(!$result){
+        if (! $result) {
             return null;
         }
 
