@@ -78,6 +78,10 @@ class Ssh
 
     public function execute(string|array $commands): bool|string
     {
+        if(empty($this->client)){
+            $this->connect();
+        }
+
         if (is_string($commands)) {
             $commands = explode("\n", $commands);
         }
