@@ -78,7 +78,7 @@ class Ssh
 
     public function execute(string|array $commands): bool|string
     {
-        if(is_string($commands)){
+        if (is_string($commands)) {
             $commands = explode("\n", $commands);
         }
 
