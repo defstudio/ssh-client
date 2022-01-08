@@ -78,7 +78,7 @@ class Ssh
 
     public function execute(string|array $commands): bool|string
     {
-        if(empty($this->client)){
+        if (empty($this->client)) {
             $this->connect();
         }
 
