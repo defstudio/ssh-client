@@ -38,7 +38,7 @@ class Ssh
         return $this;
     }
 
-    public function set_port(string $port): Ssh
+    public function port(string $port): Ssh
     {
         $this->port = $port;
 
