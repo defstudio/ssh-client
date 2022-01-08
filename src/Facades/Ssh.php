@@ -19,6 +19,7 @@ class Ssh extends Facade
     public static function fake($replies = []): SshFake
     {
         static::swap($fake = new SshFake());
+
         return $fake;
     }
 

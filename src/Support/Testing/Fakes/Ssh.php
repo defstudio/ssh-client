@@ -1,8 +1,9 @@
-<?php /** @noinspection PhpUnhandledExceptionInspection */
+<?php
+
+/** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Ssh\Support\Testing\Fakes;
 
-use Closure;
 use Illuminate\Support\Collection;
 use PHPUnit\Framework\Assert;
 
@@ -44,7 +45,6 @@ class Ssh extends \DefStudio\Ssh\Ssh
 
                 return $response;
             })->join("\n");
-
     }
 
     public function assertExecuted(string $command): void
