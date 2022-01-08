@@ -10,21 +10,21 @@ use phpseclib\Net\SSH2;
 
 class Ssh
 {
-    private string $key;
-    private string $password;
+    private string|null $key;
+    private string|null $password;
     private string $host;
     private string $port;
     private string $username;
     private SSH2 $client;
 
-    public function key(string $key): Ssh
+    public function key(string|null $key): Ssh
     {
         $this->key = $key;
 
         return $this;
     }
 
-    public function password(string $password): Ssh
+    public function password(string|null $password): Ssh
     {
         $this->password = $password;
 
@@ -74,6 +74,15 @@ class Ssh
         }
 
         return $this;
+    }
+
+    public function execute(string|array $commands): bool|string
+    {
+        if(is_string($commands)){
+            $commands = explode("\n", $commands);
+        }
+
+        return $this->client->exec(implode(" && ", $commands));
     }
 
     private function check_requirements(): void
