@@ -20,6 +20,4 @@ class SshParamsException extends Exception
     {
         return new SshParamsException('bad credentials');
     }
-
-
 }
