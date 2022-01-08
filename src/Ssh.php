@@ -1,7 +1,8 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace DefStudio\Ssh;
 
+use DefStudio\Ssh\Exceptions\SshParamsException;
 use phpseclib\Crypt\RSA;
 use phpseclib\Net\SSH2;
 
@@ -53,7 +54,7 @@ class Ssh
     {
         $this->check_requirements();
 
-        if (! empty($this->key)) {
+        if (!empty($this->key)) {
             $key = new RSA();
             $key->loadKey($this->key);
         } else {
@@ -61,14 +62,22 @@ class Ssh
         }
 
         $this->client = new SSH2($this->host, $this->port);
-        $this->client->login($this->username, $key);
-        //TODO handle failed logins
+
+        if(!$this->client->login($this->username, $key)){
+            if(!$this->client->isConnected()){
+                throw SshParamsException::could_not_connect();
+            }
+            throw SshParamsException::login_failed();
+        }
 
         return $this;
     }
 
     private function check_requirements(): void
     {
-        //TODO
+        $this->host || throw SshParamsException::param_missing('host');
+        $this->port || throw SshParamsException::param_missing('port');
+        $this->username || throw SshParamsException::param_missing('username');
+        $this->key || $this->password || throw SshParamsException::param_missing('key and/or password');
     }
 }
