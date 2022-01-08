@@ -76,7 +76,7 @@ class Ssh
         return $this;
     }
 
-    public function execute(string|array $commands): bool|string
+    public function execute(string|array $commands): string|null
     {
         if (empty($this->client)) {
             $this->connect();
@@ -86,7 +86,13 @@ class Ssh
             $commands = explode("\n", $commands);
         }
 
-        return $this->client->exec(implode(" && ", $commands));
+        $result = $this->client->exec(implode(" && ", $commands));
+
+        if(!$result){
+            return null;
+        }
+
+        return $result;
     }
 
     protected function checkRequirements(): void
