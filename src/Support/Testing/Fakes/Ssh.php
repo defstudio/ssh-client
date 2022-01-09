@@ -27,7 +27,7 @@ class Ssh extends \DefStudio\Ssh\Ssh
         return $this;
     }
 
-    public function execute(array|string $commands): bool|string
+    public function execute(array|string $commands): string|null
     {
         if (is_string($commands)) {
             $commands = explode("\n", $commands);

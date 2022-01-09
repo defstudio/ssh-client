@@ -6,7 +6,7 @@ use DefStudio\Ssh\Support\Testing\Fakes\Ssh as SshFake;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void assertExecuted(string)
+ * @method static void assertExecuted(string $command)
  * @method static void assertNothingExecuted()
  *
  * @see \DefStudio\Ssh\Ssh
