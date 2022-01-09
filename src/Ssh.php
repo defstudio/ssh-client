@@ -13,7 +13,7 @@ class Ssh
     private string|null $key;
     private string|null $password;
     private string $host;
-    private string $port;
+    private int $port = 22;
     private string $username;
     private SSH2 $client;
 
@@ -38,7 +38,7 @@ class Ssh
         return $this;
     }
 
-    public function port(string $port): Ssh
+    public function port(int $port): Ssh
     {
         $this->port = $port;
 
