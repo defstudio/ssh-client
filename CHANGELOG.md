@@ -2,6 +2,10 @@
 
 All notable changes to `ssh-client` will be documented in this file.
 
+## v0.0.5 - 2022-02-11
+
+**Full Changelog**: https://github.com/def-studio/ssh-client/compare/v0.0.4...v0.0.5
+
 ## v0.0.4 - 2022-01-09
 
 **Full Changelog**: https://github.com/def-studio/ssh-client/compare/v0.0.3...v0.0.4
