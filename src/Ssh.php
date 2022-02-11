@@ -5,8 +5,8 @@
 namespace DefStudio\Ssh;
 
 use DefStudio\Ssh\Exceptions\SshParamsException;
-use phpseclib\Crypt\RSA;
-use phpseclib\Net\SSH2;
+use phpseclib3\Crypt\RSA\PrivateKey;
+use phpseclib3\Net\SSH2;
 
 class Ssh
 {
@@ -57,8 +57,7 @@ class Ssh
         $this->checkRequirements();
 
         if (! empty($this->key)) {
-            $key = new RSA();
-            $key->loadKey($this->key);
+            $key = PrivateKey::load($this->key);
         } else {
             $key = $this->password;
         }
